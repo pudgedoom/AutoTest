@@ -13,10 +13,10 @@ public class CalculatorTest {
     public static void main(String[] args) throws MalformedURLException, InterruptedException {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "HUAWEI P10");//关于本机能查看到
+        capabilities.setCapability("deviceName", "HUAWEI MLA-AL10");//关于本机能查看到
         capabilities.setCapability("automationName", "Appium");
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "7.0");
+        capabilities.setCapability("platformVersion", "4.4.2");
         capabilities.setCapability("appPackage", "com.android.calculator2");
         capabilities.setCapability("appActivity", ".Calculator");
         

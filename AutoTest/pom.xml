@@ -15,8 +15,8 @@
         </configuration>
       </plugin>
     </plugins>
-  </build>
-  
+  </build>  
+
 <dependencies>
 	<dependency>
     	<groupId>io.appium</groupId>
@@ -27,6 +27,13 @@
     	<groupId>mysql</groupId>
     	<artifactId>mysql-connector-java</artifactId>
     	<version>5.1.38</version>
-    </dependency>	
+    </dependency>    
+    	<dependency>
+  		<groupId>org.testng</groupId>
+  		<artifactId>testng</artifactId>
+  		<version>6.10</version>
+  		<scope>test</scope>
+	</dependency>
+    
 </dependencies>
 </project>
