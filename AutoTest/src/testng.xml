@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="init">
+	<parameter name="name" value="18618618621" />
+	<parameter name="passwd" value="a123456" />
+    <test name="test1" preserve-order="true"  verbose="1">
+        <classes>
+            <class name="init.Login" />
+        </classes>
+    </test>
+</suite>	

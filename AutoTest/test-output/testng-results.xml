@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="init" duration-ms="43879" started-at="2018-09-11T09:41:34Z" finished-at="2018-09-11T09:42:18Z">
+    <groups>
+    </groups>
+    <test name="test1" duration-ms="43879" started-at="2018-09-11T09:41:34Z" finished-at="2018-09-11T09:42:18Z">
+      <class name="init.Login">
+        <test-method status="PASS" signature="login(java.lang.String, java.lang.String)[pri:0, instance:init.Login@146ba0ac]" name="login" duration-ms="39424" started-at="2018-09-11T09:41:34Z" finished-at="2018-09-11T09:42:13Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[18618618621]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[a123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="loginOut()[pri:0, instance:init.Login@146ba0ac]" name="loginOut" duration-ms="4428" started-at="2018-09-11T09:42:13Z" depends-on-methods="init.Login.login" finished-at="2018-09-11T09:42:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginOut -->
+      </class> <!-- init.Login -->
+    </test> <!-- test1 -->
+  </suite> <!-- init -->
+</testng-results>
