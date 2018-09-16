@@ -9,40 +9,51 @@ import org.testng.annotations.Test;
 import io.appium.java_client.android.AndroidDriver;
 import tools.isElementPresent;
 
-public class Login {
+
+public class Login extends init{
 	
-	init a=new init();
+//	init a=new init();
 
 //	public static void main(String[] args) {
 //		// TODO Auto-generated method stub
 //		login();
 //			
 //		}
-	@Parameters({"name","passwd"})
-	@Test
-	public  void login(String name,String passwd){
+//	@Parameters({"name","passwd"})
+//	@Test
+	public  void signIN(String name,String passwd){
 
-		a.skip();
-
+		super.skip();
+		//判断退出登录框
+		if(new isElementPresent().isElementPresent(driver, "id", "com.fuzhong.xiaoliuaquatic:id/dialog_cancel")){
+			super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/dialog_cancel").click();;
+			System.out.println("退出登录提示！");
+		}
 		//进入个人中心
-		a.driver.findElement(By.xpath("//android.widget.GridView[@resource-id='com.fuzhong.xiaoliuaquatic:id/tabGridView']/android.widget.LinearLayout[4]/android.widget.FrameLayout[1]/android.widget.ImageView[1]")).click();
+		super.driver.findElement(By.xpath("//android.widget.GridView[@resource-id='com.fuzhong.xiaoliuaquatic:id/tabGridView']/android.widget.LinearLayout[4]/android.widget.FrameLayout[1]/android.widget.ImageView[1]")).click();
 
 		//进入登录界面------不知道为什么这边不能加判断，加了，会跳出appuim重新运行
 //		AndroidDriver dr=init.initDriver();
 //		 if(new isElementPresent().isElementPresent(dr,"id","com.fuzhong.xiaoliuaquatic:id/click_login_bt")){
 //			 System.out.println("判断成功了，进来了");
-			 a.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/click_login_bt").click();
+		super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/click_login_bt").click();
 //		 }
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//输入用户名
-		a.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/account").sendKeys(name);//18618618621
+		super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/account").sendKeys(name);//18618618621
 		//输入密码
-		a.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/password").sendKeys(passwd);//a123456
+		super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/password").sendKeys(passwd);//a123456
 		//点击登录
-		a.driver.findElement(By.xpath("//android.widget.Button[@resource-id='com.fuzhong.xiaoliuaquatic:id/login']")).click();
+		super.driver.findElement(By.xpath("//android.widget.Button[@resource-id='com.fuzhong.xiaoliuaquatic:id/login']")).click();
 		
 		//校验登录是否成功
 		try{
-			String myname=a.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/bt_name").getText();
+			String myname=super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/bt_name").getText();
 			assertEquals("xjh电商管家", myname);
 			System.out.println("登录成功！");
 		}
@@ -51,21 +62,21 @@ public class Login {
 		}		
 		}
 	
-		
-		@Test(dependsOnMethods={"login"})
+//		@Test(groups={"login","out"},dependsOnMethods={"login"})
+//		@Test(dependsOnMethods={"login"})
 		public void loginOut(){
 			//进入设置
-			a.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/setting_bt").click();
+			super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/setting_bt").click();
 			
 			//退出登录
-			a.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/log_out").click();
+			super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/log_out").click();
 			
 			//点击确定
-			a.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/dialog_confim").click();
+			super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/dialog_confim").click();
 			
 			//校验退出是否成功
 			try{
-				String myname=a.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/click_login_bt").getText();
+				String myname=super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/click_login_bt").getText();
 				assertEquals("请登录", myname);
 				System.out.println("退出登录成功！");
 			}

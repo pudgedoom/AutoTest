@@ -20,7 +20,7 @@ import io.appium.java_client.android.AndroidDriver;
 import tools.isElementPresent;
 
 public class init {
-	static AndroidDriver driver=null;
+	public static AndroidDriver driver=null;
 //	 public static void main(String[] args){
 ////		 init();
 //		 skip();
@@ -37,6 +37,8 @@ public class init {
         capabilities.setCapability("app","F:\\XiaoLiuAquatic-v6.03-20180823155916.apk");//安装包，每次都安装
         capabilities.setCapability("noReset","True");//不会每次都重装。
         capabilities.setCapability("appPackage", "com.fuzhong.xiaoliuaquatic");
+        capabilities.setCapability("unicodeKeyboard", "True");//控制中文
+        capabilities.setCapability("resetKeyboard", "True");//控制中文
 //        capabilities.setCapability("appActivity","com.fuzhong.xiaoliuaquatic.ui.main.MainActivity");//找开发要或是第一个activity
 
 
@@ -55,7 +57,7 @@ public class init {
 	public  void skip(){
 		AndroidDriver driver=init.initDriver();
 		try {
-			Thread.sleep(2000);//不等待找不到元素
+			Thread.sleep(4000);//不等待找不到元素
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,14 +72,29 @@ public class init {
 		 if(new isElementPresent().isElementPresent(driver,"xpath","//android.widget.ImageView[@resource-id='com.fuzhong.xiaoliuaquatic:id/choose_sell']")){
 			 driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.fuzhong.xiaoliuaquatic:id/choose_sell']")).click();
 		 }
+			try {
+				Thread.sleep(2000);//不等待找不到元素
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	 
 		//不升级
 	 if(new isElementPresent().isElementPresent(driver,"xpath","//android.widget.Button[@resource-id='com.fuzhong.xiaoliuaquatic:id/btn_no']")){
 		 driver.findElement(By.xpath("//android.widget.Button[@resource-id='com.fuzhong.xiaoliuaquatic:id/btn_no']")).click();
 	 }
 	
+		try {
+			Thread.sleep(2000);//不等待找不到元素
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			//广告1
+	 if((new isElementPresent().isElementPresent(driver,"id","com.fuzhong.xiaoliuaquatic:id/delete"))){
 		 driver.findElementById("com.fuzhong.xiaoliuaquatic:id/delete").click();
+	 }
+
 		 
 //			//广告2，无法用工具定位，用坐标定位使用
 //		 Dimension windowSize = driver.manage().window().getSize();
