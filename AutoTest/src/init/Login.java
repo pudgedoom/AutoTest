@@ -29,6 +29,13 @@ public class Login extends init{
 			super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/dialog_cancel").click();;
 			System.out.println("退出登录提示！");
 		}
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//进入个人中心
 		super.driver.findElement(By.xpath("//android.widget.GridView[@resource-id='com.fuzhong.xiaoliuaquatic:id/tabGridView']/android.widget.LinearLayout[4]/android.widget.FrameLayout[1]/android.widget.ImageView[1]")).click();
 

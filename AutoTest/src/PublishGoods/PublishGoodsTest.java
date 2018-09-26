@@ -11,8 +11,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import com.sun.javafx.scene.paint.GradientUtils.Point;
 
 
 public class PublishGoodsTest extends init{//用例继承同一个driver可以共用一个session使用
@@ -109,47 +112,38 @@ public class PublishGoodsTest extends init{//用例继承同一个driver可以共用一个ses
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		//使用坐标选择分类！！！1、明确操作；2、根据分辨率计算。3、根据已知坐标估算大体位置，然后执行操作。观察效果调整
 		 Dimension windowSize = driver.manage().window().getSize();
 		 int height=windowSize.height;
 		 int width=windowSize.width;
 		 System.out.println(height+"-----"+width);
-		 
-		TouchAction action = new TouchAction(driver);
+		
+		
+//		TouchActions action = new TouchActions(driver);//要用webdriver，但是用不起来 io.appium.java_client.android.AndroidDriver cannot be cast to org.openqa.selenium.interactions.HasTouchScreen
 //		WebElement el=super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/threeWheelview");
-		 action.press(width,7/8*height );
-		 action.moveTo(width,-1/24*height);
+//		action.up(width, height-100);
+//		action.perform();
 //		 action.tap(0,-2);
+		 int a1=(int) (0.84*width);
+		 int b1 =(int) (0.9*height);
+		TouchAction action = new TouchAction(driver);
+		 action.press(a1,b1);//加wait一样
+		 action.moveTo(0,-10);//
 		 action.release();
-//		 action.press(el, 0, -5);
-		 action.perform();
-		
-		
-//		WebElement element = super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/classificationContentTextView");
-//		int i = 2;//要滑动几次才能找到该值，自己掂量
-//		while(i>0){
-//			Thread.sleep(2000);
-//			int x = element.getSize().width;//元素的宽1080
-//			int y = element.getLocation().getY();//元素起始点y
-//			int h =element.getSize().height;//元素的高
-//			((Object) super.driver).swipe(x/2, y+h/10*4, x/2, y+h/10*3, 300);//根据坐标点来滑动
-//			WebDriver dr =super.initDriver();
-//			dr.s
-//			i--;
-//		}
-//		Thread.sleep(2000);
+		 action.perform();		
+
 		
 		//等待一会
 		try {
-			Thread.sleep(1000);			
+			Thread.sleep(2000);			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		//使用默认第一个分类，不选择其他分类；用其他分类需要移动等方法
-//		super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/confirmTextView").click();
-//		
+		//使用默认第一个分类，不选择其他分类；用其他分类需要移动等方法--上面用坐标解决了
+		super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/confirmTextView").click();
+		
 		//等待一会
 		try {
 			Thread.sleep(1000);			
@@ -163,14 +157,13 @@ public class PublishGoodsTest extends init{//用例继承同一个driver可以共用一个ses
 		System.out.println("输入货品名称结束");
 		
 		try {
-			Thread.sleep(2000);			
+			Thread.sleep(4000);		//规避阴影
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		//点击，规格售价
-//		super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/SpecificationsSettingTextView").click();
-		super.driver.findElementByXPath("//android.widget.TextView[@resource-id='com.fuzhong.xiaoliuaquatic:id/SpecificationsSettingTextView']").click();;
+		super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/SpecificationsSettingTextView").click();
 		try {
 			Thread.sleep(2000);			
 		} catch (InterruptedException e) {

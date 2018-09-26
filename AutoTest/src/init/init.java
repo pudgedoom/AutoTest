@@ -57,7 +57,7 @@ public class init {
 	public  void skip(){
 		AndroidDriver driver=init.initDriver();
 		try {
-			Thread.sleep(4000);//不等待找不到元素
+			Thread.sleep(5000);//不等待找不到元素
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,6 +74,12 @@ public class init {
 		 }
 			try {
 				Thread.sleep(2000);//不等待找不到元素
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				Thread.sleep(4000);//不等待找不到元素
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
