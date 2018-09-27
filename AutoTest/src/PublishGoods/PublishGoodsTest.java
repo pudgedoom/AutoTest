@@ -5,6 +5,7 @@ import init.init;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import tools.Slide;
 import tools.isElementPresent;
 
 import org.openqa.selenium.By;
@@ -112,25 +113,29 @@ public class PublishGoodsTest extends init{//用例继承同一个driver可以共用一个ses
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//使用坐标选择分类！！！1、明确操作；2、根据分辨率计算。3、根据已知坐标估算大体位置，然后执行操作。观察效果调整
-		 Dimension windowSize = driver.manage().window().getSize();
-		 int height=windowSize.height;
-		 int width=windowSize.width;
-		 System.out.println(height+"-----"+width);
 		
-		
-//		TouchActions action = new TouchActions(driver);//要用webdriver，但是用不起来 io.appium.java_client.android.AndroidDriver cannot be cast to org.openqa.selenium.interactions.HasTouchScreen
-//		WebElement el=super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/threeWheelview");
-//		action.up(width, height-100);
-//		action.perform();
-//		 action.tap(0,-2);
-		 int a1=(int) (0.84*width);
-		 int b1 =(int) (0.9*height);
-		TouchAction action = new TouchAction(driver);
-		 action.press(a1,b1);//加wait一样
-		 action.moveTo(0,-10);//
-		 action.release();
-		 action.perform();		
+		//使用封装的方法执行滑动操作
+		Slide sl=new Slide();
+		sl.swipeControl(driver, "id", "com.fuzhong.xiaoliuaquatic:id/threeWheelview", 5, "up");
+//		//使用坐标选择分类！！！1、明确操作；2、根据分辨率计算。3、根据已知坐标估算大体位置，然后执行操作。观察效果调整
+//		 Dimension windowSize = driver.manage().window().getSize();
+//		 int height=windowSize.height;
+//		 int width=windowSize.width;
+//		 System.out.println(height+"-----"+width);
+//		
+//		
+////		TouchActions action = new TouchActions(driver);//要用webdriver，但是用不起来 io.appium.java_client.android.AndroidDriver cannot be cast to org.openqa.selenium.interactions.HasTouchScreen
+////		WebElement el=super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/threeWheelview");
+////		action.up(width, height-100);
+////		action.perform();
+////		 action.tap(0,-2);
+//		 int a1=(int) (0.84*width);
+//		 int b1 =(int) (0.9*height);
+//		TouchAction action = new TouchAction(driver);
+//		 action.press(a1,b1);//加wait一样
+//		 action.moveTo(0,-10);//
+//		 action.release();
+//		 action.perform();		
 
 		
 		//等待一会
@@ -172,13 +177,16 @@ public class PublishGoodsTest extends init{//用例继承同一个driver可以共用一个ses
 		}
 		//点击，销售分类
 		super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/price_unit_text").click();
+		System.out.println("进入销售分类成功");
 		try {
 			Thread.sleep(1000);			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//点击，使用默认第一个；同上
+		//选择单位
+		sl.swipeControl(driver, "id", "com.fuzhong.xiaoliuaquatic:id/oneWheelview", 5, "up");
+		//确认单位
 		super.driver.findElementById("com.fuzhong.xiaoliuaquatic:id/confirmTextView").click();
 		
 		//一件等于xx斤
