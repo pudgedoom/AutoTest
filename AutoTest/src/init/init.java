@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -28,13 +29,15 @@ public class init {
 //	 }
 
 	public static  AndroidDriver initDriver(){		
+		//读取配置文件，拿到路径
+		String andriod_path=ResourceBundle.getBundle("config/config").getString("andriod_path");
 
 		DesiredCapabilities capabilities=new DesiredCapabilities();
         capabilities.setCapability("deviceName", "HUAWEI MLA-AL10");//关于本机能查看到
         capabilities.setCapability("automationName", "Appium");
-        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("platformName", "Andriond");
         capabilities.setCapability("platformVersion", "4.4.2");
-        capabilities.setCapability("app","F:\\XiaoLiuAquatic-v6.03-20180823155916.apk");//安装包，每次都安装
+        capabilities.setCapability("app",andriod_path);//安装包，每次都安装
         capabilities.setCapability("noReset","True");//不会每次都重装。
         capabilities.setCapability("appPackage", "com.fuzhong.xiaoliuaquatic");
         capabilities.setCapability("unicodeKeyboard", "True");//控制中文
